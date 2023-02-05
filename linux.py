@@ -1,7 +1,8 @@
-import subprocess
+from subprocess import getoutput as cmd
+from colorama import Fore
 
 def run_linux()-> str:
-    data = subprocess.check_output(['sudo', 'iwlist', 'scan']).decode('utf-8')
+    data = cmd(['sudo', 'iwlist', 'scan']).decode('utf-8')
     lines = data.split('\n')
     wifis = []
     passwords = []
@@ -13,4 +14,4 @@ def run_linux()-> str:
             password = '***'
             passwords.append(password)
 
-    return '\n'.join(f'{wifi}:{password}' for wifi, password in zip(wifis, passwords))
+    return '\n'.join(f'{wifi}:'+Fore.LIGHTGREEN_EX+f'{str(password[0])}'+Fore.RESET for wifi, password in zip(wifis, passwords))

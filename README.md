@@ -9,4 +9,6 @@
 
 > cd ./extract_wifi_password 
 
+> run : pyhton -m pip install -r requirements.txt
+
 > python ./app.py
